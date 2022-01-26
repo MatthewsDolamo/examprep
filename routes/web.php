@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\SasolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test', function () {
+
+    return view('index');
+
+})->middleware('superuser');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//route::get('/',[TestController::class]);
+//route::resource('test',TestController::class);
+
+route::apiResource('sasol', SasolController::class);

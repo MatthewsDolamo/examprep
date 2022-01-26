@@ -18,9 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'isSuperAdmin',
     ];
 
     /**
@@ -41,4 +43,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * User has many Post
+     */
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 }

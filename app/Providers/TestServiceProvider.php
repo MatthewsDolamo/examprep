@@ -4,10 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class TestServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      *
      * @return void
      */
@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      *
      * @return void
      */
@@ -25,5 +25,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //
 
+       /* view()->composer('*', function ($view){
+            $test = "Test service providers";
+
+            return $view->with('test', $test);
+        });*/
     }
 }
